@@ -4,7 +4,7 @@ This module implements a **Simple Generative Adversarial Network (SGAN)** for im
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Category        | Tools / Libraries              |
 |-----------------|-------------------------------|
@@ -43,10 +43,10 @@ This module implements a **Simple Generative Adversarial Network (SGAN)** for im
 
 ## Why SGAN for Steganography?
 
-- 🔹 Lightweight and fast
-- 🔹 High perceptual quality
-- 🔹 Easy to train and extend
-- 🔹 Can be adapted to other modalities (e.g., text)
+-  Lightweight and fast
+-  High perceptual quality
+-  Easy to train and extend
+-  Can be adapted to other modalities (e.g., text)
 
 ---
 
