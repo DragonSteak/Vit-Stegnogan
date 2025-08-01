@@ -9,7 +9,7 @@ Both systems are designed with reproducibility, deployment readiness, and metric
 
 ---
 
-## 🔐 1. Image_Sgan
+## 1. Image_Sgan
 
 > A convolutional GAN (SGAN)-based steganography system that hides a secret image inside a cover image using a Dense or Residual encoder-decoder structure, trained adversarially against a CNN discriminator.
 
@@ -65,7 +65,7 @@ Both systems are designed with reproducibility, deployment readiness, and metric
 - **Text Accuracy**: Exact bitwise match between input and recovered text
 
 
-## 🧪 Shared Evaluation Metrics
+## Shared Evaluation Metrics
 
 | Metric        | Description                                                   |
 |---------------|---------------------------------------------------------------|
@@ -76,7 +76,7 @@ Both systems are designed with reproducibility, deployment readiness, and metric
 
 ---
 
-## 📂 Checkpoints & Assets
+## Checkpoints & Assets
 
 | File                      | Type            | Description                              |
 |---------------------------|------------------|------------------------------------------|
