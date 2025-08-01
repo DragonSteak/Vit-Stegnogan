@@ -16,7 +16,7 @@ This module implements a **Simple Generative Adversarial Network (SGAN)** for im
 
 ---
 
-## 🧱 Architecture Overview
+## Architecture Overview
 
 - **Encoder (CNN)**  
   Hides a secret image inside a cover image → generates a stego image.
