@@ -1,0 +1,12 @@
+torch>=2.0.0
+torchvision>=0.15.0
+numpy
+matplotlib
+opencv-python
+scikit-learn
+tqdm
+Pillow
+
+# Optional:
+# onnx
+# onnxruntime
