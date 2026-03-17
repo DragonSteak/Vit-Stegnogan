@@ -53,15 +53,26 @@ if mode == "Encode":
         cover_img = Image.open(cover_file).convert("RGB")
         secret_img = Image.open(secret_file).convert("L")  # grayscale
 
-        st.image(cover_img, caption="Cover Image", use_container_width=True)
-        st.image(secret_img, caption="Secret Image", use_container_width=True)
+        # ✅ FORCE SAME SIZE
+        cover_img = cover_img.resize((256, 256))
+        secret_img = secret_img.resize((256, 256))
 
-        cover_tensor = transform(cover_img).unsqueeze(0).to(DEVICE)
-        secret_tensor = transform(secret_img).unsqueeze(0).to(DEVICE)
+        st.image(cover_img, caption="Cover Image")
+        st.image(secret_img, caption="Secret Image")
 
-        # ensure correct shape for data_depth=1
+        # tensors
+        cover_tensor = transforms.ToTensor()(cover_img).unsqueeze(0).to(DEVICE)
+        secret_tensor = transforms.ToTensor()(secret_img).unsqueeze(0).to(DEVICE)
+
+        # ✅ CRITICAL FIX: ensure correct channel depth
         if secret_tensor.shape[1] != DATA_DEPTH:
-            secret_tensor = secret_tensor[:, :DATA_DEPTH, :, :]
+            secret_tensor = secret_tensor[:, 0:1, :, :]  # force 1 channel
+
+        # ✅ FINAL SAFETY: match spatial dims
+        if cover_tensor.shape[2:] != secret_tensor.shape[2:]:
+            secret_tensor = torch.nn.functional.interpolate(
+                secret_tensor, size=cover_tensor.shape[2:]
+            )
 
         with torch.no_grad():
             stego = encoder(cover_tensor, secret_tensor)
@@ -69,7 +80,7 @@ if mode == "Encode":
         stego_img = stego.squeeze().permute(1, 2, 0).cpu().numpy()
         stego_img = np.clip(stego_img, 0, 1)
 
-        st.image(stego_img, caption="Stego Image", use_container_width=True)
+        st.image(stego_img, caption="Stego Image")
 
 # =========================
 # 🔓 DECODE
