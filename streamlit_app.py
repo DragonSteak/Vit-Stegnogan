@@ -5,7 +5,11 @@ from torchvision import transforms
 import os
 
 # ===== IMPORT YOUR MODEL =====
-from Image_Sgan.model import Encoder, Decoder
+from Image_Sgan.model import DenseEncoder, DenseDecoder
+DEVICE = torch.device("cpu")
+
+DATA_DEPTH = 1
+HIDDEN_SIZE = 32
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
